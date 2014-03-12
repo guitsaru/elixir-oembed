@@ -6,6 +6,9 @@ defmodule OEmbed.Discovery do
 
   Examples
 
+      iex> OEmbed.Discovery.discover "http://vimeo.com/82985780"
+      "http://vimeo.com/api/oembed.json?url=http%3A%2F%2Fvimeo.com%2F82985780"
+
       iex> OEmbed.Discovery.discover "https://twitter.com/mattetti/status/443849671727800320"
       "https://api.twitter.com/1/statuses/oembed.json?id=443849671727800320"
 
@@ -17,8 +20,16 @@ defmodule OEmbed.Discovery do
   def discover(url) do
     html = url |> HTTPoison.get |> HTTPoison.Response.body
 
-    regex = ~r/<link\s+rel="alternate"\s+type="application\/json\+oembed"\s+href="([^\"]+)"[^>]*>/
-    regex |> Regex.run(html) |> oembed_link_from_match
+    regex = ~r/<link[^>]*type="application\/json\+oembed"[^>]*>/
+    regex |> Regex.run(html) |> link_from_match |> href_from_link
+  end
+
+  defp link_from_match(nil), do: nil
+  defp link_from_match([link]), do: link
+
+  defp href_from_link(nil), do: nil
+  defp href_from_link(link) do
+    ~r/href=["|']([^"']+)["|']/ |> Regex.run(link) |> oembed_link_from_match
   end
 
   defp oembed_link_from_match(nil), do: nil

@@ -1,0 +1,6 @@
+[ "ets_lru": {:git, "https://github.com/cloudant/ets_lru.git", "54df566f02412595f69500ce2326d31cfa55ae7a", [ref: "master"]},
+  "hackney": {:git, "git://github.com/benoitc/hackney.git", "448025a8856b66da550ad8bb96a26477523f9f66", [tag: "0.11.1"]},
+  "hackney_lib": {:git, "https://github.com/benoitc/hackney_lib.git", "bf4e6fde4dd6e08b7434af7b092596b3633a872c", [tag: "0.2.4"]},
+  "httpoison": {:git, "git://github.com/knewter/httpoison.git", "93fea268b475806ac56cbf2aabcf21b3146a2302", [branch: "0.13_application_start_fix"]},
+  "idna": {:git, "https://github.com/benoitc/erlang-idna.git", "1cdbcd985ddbc06ec4504d1081ca5372006f71ed", [ref: "master"]},
+  "mimetypes": {:git, "git://github.com/spawngrid/mimetypes.git", "47d37a977a7d633199822bf6b08353007483d00f", [ref: "master"]} ]

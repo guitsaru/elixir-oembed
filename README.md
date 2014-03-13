@@ -1,5 +1,6 @@
 OEmbed
 ======
+[![Build Status](https://travis-ci.org/guitsaru/elixir-oembed.png?branch=master)](https://travis-ci.org/guitsaru/elixir-oembed)
 
 An oEmbed consumer for Elixir.
 

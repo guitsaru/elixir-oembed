@@ -30,5 +30,5 @@ Usage
 
 ```elixir
 OEmbed.start
-OEmbed.for "https://twitter.com/mattetti/status/443849671727800320"
+OEmbed.for "https://twitter.com/elixirlang/status/430052818892754944"
 ```

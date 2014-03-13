@@ -15,10 +15,17 @@ defmodule OEmbed.Discovery do
       iex> OEmbed.Discovery.discover "http://google.com"
       nil
 
+      iex> OEmbed.Discovery.discover "http://asdgkahsdlgkjalsdfsadghi238.com"
+      nil
+
   Returns a String URI if the url is embeddable, otherwise returns nil.
   """
   def discover(url) do
-    html = url |> HTTPoison.get |> HTTPoison.Response.body
+    html = try do
+      HTTPoison.get(url).body
+    rescue
+      HTTPoison.HTTPError -> ""
+    end
 
     regex = ~r/<link[^>]*type="application\/json\+oembed"[^>]*>/
     regex |> Regex.run(html) |> link_from_match |> href_from_link
